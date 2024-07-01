@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get well soon babe 💟</title>
+    <style>
+        @font-face
+        {
+            font-family : "font-one";
+            src : url('capri-pro-bold.otf');
+        }
+        *
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            letter-spacing: 0.5px;
+            font-family: "font-one";
+        }
+        html
+        {
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+        }
+        body
+        {
+            display: flex;
+            padding: 60px 0;
+            justify-content: center;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        .container
+        {
+            width: 340px;
+            height: 600px;
+            background-color: #8eb4b59e;
+            position: relative;
+            z-index: 10;
+            transition: all cubic-bezier(0.19,1,0.22,1)10s;
+            transform-style: preserve-3d;
+            transform-origin: left;
+            /* transform: rotateY(-120deg); */
+        }
+        .container.active
+        {
+            transform: rotateY(-180deg);
+        }
+        .open
+        {
+            position: absolute;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 10;
+            animation: openanim 0.5s linear forwards;
+            animation-delay: 10s;
+            opacity: 0;
+        }
+        @keyframes openanim 
+        {
+            0%
+            {
+                opacity: 0;
+                top: -100px;
+            }
+            100%
+            {
+                opacity: 1;
+                top: 200px;
+
+            }
+        }
+        .open img
+        {
+            width: 120px;
+            filter: drop-shadow(4px 4px 5px rgba(0,0,0,0.3));
+            cursor: pointer;
+        }
+        .care-text
+        {
+            width: 340px;
+            height: 600px;
+            background-color: #3dc9ce9e;
+            background: url('bg.jpg');
+            background-position: center;
+            background-size: cover;
+            position: absolute;
+            top:60px;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 5;
+            padding: 20px;
+        }
+        .care-text .backbtn
+        {
+            width: 40px;
+            filter: drop-shadow(3px 3px 1px rgba(0,0,0,0.3));
+            cursor: pointer;
+        }
+        .care-text .side-btns
+        {
+            /* background-color: red; */
+            width: fit-content;
+            margin-top: 20px;
+            position: absolute;
+            left: 0;
+            background-color: white;
+            border-top-right-radius: 15px;
+            border-bottom-right-radius: 15px;
+            display: flex;
+            flex-direction: column;
+            padding: 15px 0;
+            filter: drop-shadow(3px 3px 5px rgba(0,0,0,0.3));
+            overflow: hidden;
+
+        }
+        .care-text .side-btns .buttons
+        {
+            
+            padding: 5px 20px;
+            /* background-color: red; */
+        }
+        .care-text .side-btns .buttons img
+        {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            object-fit: cover;
+            border:3px solid #7CC64B;
+            filter: drop-shadow(3px 3px 1px rgba(0,0,0,0.3));
+            cursor: pointer;
+        }
+        .care-text .care-text-container
+        {
+            float: right;
+            /* padding-right: 5px; */
+        }
+        .care-text .care-text-container .care-text-data
+        {
+            width: 60%;
+            float: right;
+            text-align: right;
+            display: none;
+            transition: 0.4s ease;
+        }
+        .care-text .care-text-container .care-text-data.active
+        {
+            display: block;
+            animation: careAnim 0.3s linear forwards;
+        }
+        @keyframes careAnim 
+        {
+            from
+            {
+                transform: translateX(20px);
+                opacity: 0;
+            }
+            to
+            {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        .care-text .care-text-container .care-text-data p
+        {
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .care-text .care-text-container .care-text-data img
+        {
+            width: 140px;
+            height: 140px;
+            object-fit: cover;
+            border-radius: 50%;
+            margin: 15px 0;
+            border: 5px solid #F8CB00;
+            filter: drop-shadow(3px 3px 1px rgba(0,0,0,0.3));
+        }
+         .side-btns-container .btn-overlay
+        {
+            background-color: #FACD00;
+            width: 100px;
+            height: 74px;
+            position: absolute;
+            top: 18px;
+            left: 10px;
+            z-index: -1;
+            border-top-left-radius: 15px;
+            border-bottom-left-radius: 15px;
+            transition: 0.5s ease;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <canvas id="care-canvas">
+        </canvas>
+
+        <div class="open">
+            <img src="cute.gif">
+        </div>
+    </div>
+    <div class="care-text">
+        <img src="backbtn.png" class="backbtn">
+        <div class="side-btns-container">
+            <div class="side-btns">
+                <div class="buttons">
+                    <img src="img/1.JPG">
+                </div>
+                <div class="buttons">
+                    <img src="img/2.JPG">
+                </div>
+                <div class="buttons">
+                    <img src="img/3.JPG">
+                </div>
+                <div class="buttons">
+                    <img src="img/4.JPG">
+                </div>
+                <div class="buttons">
+                    <img src="img/5.JPG">
+                </div>
+
+                <div class="btn-overlay">
+
+                </div>
+            </div>
+        </div>
+
+        <div class="care-text-container">
+            <div class="care-text-data active">
+                <h1>Adorable Messages for My Love</h1>
+                <img src="img/1.JPG">
+                <p>Just a quick note to remind you how much you mean to me. Your smile lights up my world, and your laughter is the sweetest sound I've ever heard. Every moment with you is a treasure, and I'm so grateful for each one we share.</p>
+            </div>
+            <div class="care-text-data">
+                <h1>You are my Special One</h1>
+                <img src="img/2.JPG">
+                <p>Your kindness, intelligence, and beauty never cease to amaze me. I love the way your eyes sparkle when you're happy and how you always know just how to make my day brighter. You make my world a better place simply by being in it.</p>
+            </div>
+            <div class="care-text-data">
+                <h1>My cute little Sunshine</h1>
+                <img src="img/3.JPG">
+                <p>I cherish our time together and look forward to all the beautiful memories we'll continue to create. You are my everything, and I feel incredibly lucky to call you mine.</p>
+            </div>
+            <div class="care-text-data">
+                <h1>The Angel of my Dreams</h1>
+                <img src="img/4.JPG">
+                <p>I love the way your eyes sparkle when you’re happy, and the way you always know how to make me feel better when I’m down. Your kindness, intelligence, and beauty never cease to amaze me, and I am so grateful to have you in my life.</p>
+            </div>
+            <div class="care-text-data">
+                <h1>Take care of your Health bba</h1>
+                <img src="img/5.JPG">
+                <p>Every time I think of you, my heart skips a beat. I cherish every moment we spend together, and I can’t wait to create even more beautiful memories with you. You are my everything, and I’m so lucky to call you mine.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="matter.js"></script>
+
+<script>
+
+// js code for flip the card 
+let openBtn = document.querySelector('.open');
+let container = document.querySelector('.container');
+if(openBtn && container)
+{
+    openBtn.addEventListener('click',()=>{
+        container.classList.add('active');
+    })
+}
+let backbtn = document.querySelector('.backbtn');
+if(backbtn)
+{
+    backbtn.addEventListener('click',()=>{
+        container.classList.remove('active');
+    })
+}
+
+// js code for add image click data appears
+let buttons = document.querySelectorAll('.buttons');
+let careTextData = document.querySelectorAll('.care-text-data');
+
+
+if(buttons && careTextData)
+{
+    buttons.forEach((clickBtn, targetText)=>{
+        clickBtn.addEventListener('click',(e)=>{
+            let btnOverlay = document.querySelector('.btn-overlay');
+            btnOverlay.style.height = e.target.offsetHeight + 'px';
+            btnOverlay.style.top = e.target.offsetTop + 'px';
+
+            careTextData.forEach((targetDataremove)=>{
+                targetDataremove.classList.remove('active');
+            })
+
+            careTextData[targetText].classList.add('active');
+        })
+    })
+}
+
+
+        var Engine = Matter.Engine,
+        Render = Matter.Render,
+        Runner = Matter.Runner,
+        Composites = Matter.Composites,
+        Common = Matter.Common,
+        MouseConstraint = Matter.MouseConstraint,
+        Mouse = Matter.Mouse,
+        Composite = Matter.Composite,
+        Bodies = Matter.Bodies;
+
+    // create engine
+    var engine = Engine.create(),
+        world = engine.world;
+
+    // create renderer
+    var render = Render.create({
+        canvas: document.getElementById('care-canvas'),
+        engine: engine,
+        options: {
+            background : "none",
+            width: 340,
+            height: 600,
+            wireframes : false,
+        }
+    });
+
+    Render.run(render);
+
+    // create runner
+    var runner = Runner.create();
+    Runner.run(runner, engine);
+
+    for(let i = 0; i < 35; i++)
+    {
+        var createHearts = Bodies.circle(50, -800 + i * 20, 18 ,{
+            restitution: 0.7,
+            render: {
+                sprite : {
+                    
+                    texture : "heart.png",
+                    xScale : 0.16,
+                    yScale : 0.16,
+                }
+            }
+        });
+        Composite.add(world, createHearts);
+
+    }
+
+    // Create a small rectangle shape
+    let createShape = Bodies.rectangle(70, 70, 150, 10, {
+        isStatic: true,
+        angle: Math.PI / 12, // 45 degrees in radians
+        render: {
+            sprite : {
+                texture : "1.png",
+                xScale : 0.3,
+                yScale : 0.3,
+            }
+        }
+    });
+
+    
+    Composite.add(world, createShape);
+
+    let createShapeTwo = Bodies.rectangle(270, 150, 150, 10, {
+        isStatic : true,
+        angle: Math.PI / -10, // 45 degrees in radians
+        render: {
+            sprite : {
+                texture : "2.png",
+                xScale : 0.3,
+                yScale : 0.3,
+            }
+        }
+    })
+    Composite.add(world, createShapeTwo);
+
+    let createShapeThree = Bodies.rectangle(70, 280, 150, 10, {
+        isStatic : true,
+        angle: Math.PI / 10, // 45 degrees in radians
+        render: {
+            sprite : {
+                texture : "3.png",
+                xScale : 0.3,
+                yScale : 0.3,
+            }
+        }
+    })
+    Composite.add(world, createShapeThree);
+
+    let createShapeFour = Bodies.rectangle(270, 400, 150, 10, {
+        isStatic : true,
+        angle: Math.PI / -10, // 45 degrees in radians
+        render: {
+            sprite : {
+                texture : "4.png",
+                xScale : 0.3,
+                yScale : 0.3,
+            }
+        }
+    })
+    Composite.add(world, createShapeFour);
+
+    
+    Composite.add(world, [
+        // walls
+        Bodies.rectangle(2000, -150, 800, 50, { isStatic: true }),
+        Bodies.rectangle(400, 630, 800, 50, { isStatic: true }),
+        Bodies.rectangle(370, 300, 50, 2000, { isStatic: true }),
+        Bodies.rectangle(-30, 300, 50, 2000, { isStatic: true })
+    ]);
+
+        // add mouse control
+        var mouse = Mouse.create(render.canvas),
+        mouseConstraint = MouseConstraint.create(engine, {
+            mouse: mouse,
+            constraint: {
+                stiffness: 0.2,
+                render: {
+                    visible: false
+                }
+            }
+        });
+
+    Composite.add(world, mouseConstraint);
+
+    // keep the mouse in sync with rendering
+    render.mouse = mouse;
+
+    // fit the render viewport to the scene
+    Render.lookAt(render, {
+        min: { x: 0, y: 0 },
+        max: { x: 340, y: 600 }
+    });
+
+    
+
+</script>
+</body>
+</html>
